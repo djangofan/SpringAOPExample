@@ -1,21 +1,23 @@
 package com.journaldev.spring.tests;
 
 import com.journaldev.spring.SpringTestBase;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
 
 public class AOPTests extends SpringTestBase
 {
-    @Test(expected=RuntimeException.class)
+    @Test(expectedExceptions=RuntimeException.class)
     public void testThrowRuntimeException() {
+        Reporter.log("Testing an exception thrown from Employee...");
         employeeService.getEmployee().throwException();
     }
 
     @Test
     public void testGetDefaultName() {
         String stubDefaultName = employeeService.getEmployee().getName();
-        System.out.println("Default name=" + employeeService.getEmployee().getName());
-        Assert.assertEquals("", "Dummy Name", stubDefaultName);
+        Reporter.log("The value of the default name is '" + employeeService.getEmployee().getName() + "'.");
+        Assert.assertEquals("Dummy Name", stubDefaultName, "The default Employee name was not '" + stubDefaultName + "'.");
     }
 
     @Test
@@ -23,7 +25,7 @@ public class AOPTests extends SpringTestBase
         String stubNewName = "John Smith";
         employeeService.getEmployee().setName(stubNewName);
         String retrievedName = employeeService.getEmployee().getName();
-        System.out.println("Test name=" + retrievedName);
-        Assert.assertEquals("Verify name can be changed to '" + stubNewName + "'.", stubNewName, retrievedName);
+        Reporter.log("Value of name after setting Employee name is '" + retrievedName + "'.");
+        Assert.assertEquals(stubNewName, retrievedName, "The Employee name could not be changed to '" + stubNewName + "'.");
     }
 }
