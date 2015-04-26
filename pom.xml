@@ -4,6 +4,7 @@
 	<groupId>org.springframework.samples</groupId>
 	<artifactId>SpringAOPExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<description>Forked from http://www.journaldev.com/2583/spring-aop-example-tutorial-aspect-advice-pointcut-joinpoint-annotations-xml-configuration</description>
 	<properties>
         <!-- Generic properties -->
         <java.version>1.8</java.version>
