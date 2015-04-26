@@ -22,5 +22,4 @@ public class SpringTestBase
     {
         ctx.close();
     }
-
 }
